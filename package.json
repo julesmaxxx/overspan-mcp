@@ -1,0 +1,30 @@
+{
+  "name": "overspan-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for the Overspan hosted Overpass API: OpenStreetMap queries as tools for Claude, Cursor, and other MCP clients.",
+  "type": "module",
+  "bin": { "overspan-mcp": "dist/index.js" },
+  "main": "dist/index.js",
+  "files": ["dist", "README.md", "LICENSE"],
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "keywords": ["mcp", "model-context-protocol", "overpass", "overpass-api", "openstreetmap", "osm", "overspan", "geospatial"],
+  "author": "Overspan (https://overspan.dev)",
+  "license": "MIT",
+  "homepage": "https://overspan.dev",
+  "repository": { "type": "git", "url": "git+https://github.com/mijukiwi/overspan-mcp.git" },
+  "bugs": { "url": "https://github.com/mijukiwi/overspan-mcp/issues" },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0",
+    "vitest": "^3.0.0"
+  }
+}
