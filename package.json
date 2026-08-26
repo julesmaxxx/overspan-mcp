@@ -1,6 +1,7 @@
 {
   "name": "overspan-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "mcpName": "dev.overspan/mcp",
   "description": "MCP server for the Overspan hosted Overpass API: OpenStreetMap queries as tools for Claude, Cursor, and other MCP clients.",
   "type": "module",
   "bin": { "overspan-mcp": "dist/index.js" },

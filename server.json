@@ -1,0 +1,29 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "dev.overspan/mcp",
+  "description": "OpenStreetMap queries as MCP tools, served by the Overspan hosted Overpass API.",
+  "repository": {
+    "url": "https://github.com/julesmaxxx/overspan-mcp",
+    "source": "github"
+  },
+  "version": "0.1.1",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "overspan-mcp",
+      "version": "0.1.1",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "OVERSPAN_API_KEY",
+          "description": "Overspan API key, sent as an Authorization: Bearer header. Plans at https://overspan.dev/#pricing; the key arrives by email after checkout.",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}
