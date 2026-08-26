@@ -16,8 +16,8 @@
   "author": "Overspan (https://overspan.dev)",
   "license": "MIT",
   "homepage": "https://overspan.dev",
-  "repository": { "type": "git", "url": "git+https://github.com/mijukiwi/overspan-mcp.git" },
-  "bugs": { "url": "https://github.com/mijukiwi/overspan-mcp/issues" },
+  "repository": { "type": "git", "url": "git+https://github.com/julesmaxxx/overspan-mcp.git" },
+  "bugs": { "url": "https://github.com/julesmaxxx/overspan-mcp/issues" },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0",
     "zod": "^3.25.0"
