@@ -1,4 +1,4 @@
-import type { Config } from "./config.js";
+import { MISSING_KEY_GUIDANCE, type Config } from "./config.js";
 import { ERROR_HINTS } from "./hints.js";
 import { VERSION } from "./version.js";
 
@@ -40,6 +40,7 @@ async function toResult(res: Response): Promise<ApiResult> {
 }
 
 export async function runQuery(cfg: Config, ql: string): Promise<ApiResult> {
+  if (!cfg.apiKey) throw new Error(MISSING_KEY_GUIDANCE);
   const res = await fetch(`${cfg.apiUrl}/api/interpreter`, {
     method: "POST",
     headers: {
@@ -53,6 +54,7 @@ export async function runQuery(cfg: Config, ql: string): Promise<ApiResult> {
 }
 
 export async function getUsage(cfg: Config): Promise<ApiResult> {
+  if (!cfg.apiKey) throw new Error(MISSING_KEY_GUIDANCE);
   const res = await fetch(`${cfg.apiUrl}/api/usage`, {
     headers: { Authorization: `Bearer ${cfg.apiKey}`, "User-Agent": USER_AGENT },
   });

@@ -82,6 +82,25 @@ describe("overspan MCP server", () => {
     expect(text).toMatch(/lat and lon|south, west, north, east/);
   });
 
+  it("starts keyless, lists tools, and answers tool calls with setup guidance", async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    const server = buildServer({ apiKey: "", apiUrl: "https://api.example.test", maxChars: 48000 });
+    const client = new Client({ name: "keyless-client", version: "0.0.0" });
+    const [clientTransport, serverTransport] = InMemoryTransport.createLinkedPair();
+    await Promise.all([server.connect(serverTransport), client.connect(clientTransport)]);
+    expect((await client.listTools()).tools.length).toBe(5);
+    const result = await client.callTool({
+      name: "overpass_query",
+      arguments: { query: "[out:json];node(1);out;" },
+    });
+    expect(result.isError).toBe(true);
+    expect(fetchMock).not.toHaveBeenCalled();
+    const text = (result.content as Array<{ type: string; text: string }>)[0].text;
+    expect(text).toContain("OVERSPAN_API_KEY is not set");
+    expect(text).toContain("overspan.dev/#pricing");
+  });
+
   it("serves the cheat sheet resource", async () => {
     const client = await connectedClient();
     const read = await client.readResource({ uri: "overspan://overpass-ql" });
