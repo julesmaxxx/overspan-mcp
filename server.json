@@ -18,7 +18,7 @@
       "environmentVariables": [
         {
           "name": "OVERSPAN_API_KEY",
-          "description": "Overspan API key, sent as an Authorization: Bearer header. Plans at https://overspan.dev/#pricing; the key arrives by email after checkout.",
+          "description": "Overspan API key, sent as an Authorization: Bearer header. Plans at https://overspan.dev/?utm_source=overspan-mcp&utm_medium=registry#pricing; the key arrives by email after checkout.",
           "isRequired": true,
           "isSecret": true,
           "format": "string"

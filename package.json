@@ -16,7 +16,7 @@
   "keywords": ["mcp", "model-context-protocol", "overpass", "overpass-api", "openstreetmap", "osm", "overspan", "geospatial"],
   "author": "Overspan (https://overspan.dev)",
   "license": "MIT",
-  "homepage": "https://overspan.dev",
+  "homepage": "https://overspan.dev/?utm_source=overspan-mcp&utm_medium=npm",
   "repository": { "type": "git", "url": "git+https://github.com/julesmaxxx/overspan-mcp.git" },
   "bugs": { "url": "https://github.com/julesmaxxx/overspan-mcp/issues" },
   "dependencies": {

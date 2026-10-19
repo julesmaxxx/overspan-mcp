@@ -1,6 +1,6 @@
 export const ERROR_HINTS: Record<string, string> = {
   missing_key: "No API key reached the gateway. Check OVERSPAN_API_KEY in the MCP server's env block.",
-  invalid_key: "The key is unknown, revoked, or not yet activated. Check it for typos; keys arrive by email after checkout at https://overspan.dev.",
+  invalid_key: "The key is unknown, revoked, or not yet activated. Check it for typos; keys arrive by email after checkout at https://overspan.dev/?utm_source=overspan-mcp&utm_medium=tool#pricing",
   missing_query: "No Overpass QL reached the gateway. This is a bug in the tool, not in your query.",
   query_caps: "[timeout:] or [maxsize:] exceeds this key's tier cap. Lower the value, or upgrade the plan.",
   rate_limited: "Too many requests this minute. Wait the Retry-After period, then continue at a slower pace.",

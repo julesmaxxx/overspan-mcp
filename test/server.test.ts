@@ -98,7 +98,7 @@ describe("overspan MCP server", () => {
     expect(fetchMock).not.toHaveBeenCalled();
     const text = (result.content as Array<{ type: string; text: string }>)[0].text;
     expect(text).toContain("OVERSPAN_API_KEY is not set");
-    expect(text).toContain("overspan.dev/#pricing");
+    expect(text).toContain("overspan.dev/?utm_source=overspan-mcp&utm_medium=tool#pricing");
   });
 
   it("serves the cheat sheet resource", async () => {

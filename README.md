@@ -1,8 +1,8 @@
 # overspan-mcp
 
-An MCP (Model Context Protocol) server for [Overspan](https://overspan.dev), the hosted Overpass API. It gives Claude, Cursor, and any other MCP client direct, metered access to full-planet OpenStreetMap data: raw Overpass QL plus helper tools for nearby search, bounding-box search, counting, and usage checks.
+An MCP (Model Context Protocol) server for [Overspan](https://overspan.dev/?utm_source=overspan-mcp&utm_medium=readme), the hosted Overpass API. It gives Claude, Cursor, and any other MCP client direct, metered access to full-planet OpenStreetMap data: raw Overpass QL plus helper tools for nearby search, bounding-box search, counting, and usage checks.
 
-You need an Overspan API key. Plans start at $19/month at [overspan.dev](https://overspan.dev/#pricing); the key arrives by email after checkout, no account needed.
+You need an Overspan API key. Plans start at $19/month at [overspan.dev](https://overspan.dev/?utm_source=overspan-mcp&utm_medium=readme#pricing); the key arrives by email after checkout, no account needed.
 
 ## Quickstart
 
@@ -74,9 +74,9 @@ The test suite covers the query builders, response shaping, error mapping, and a
 
 ## Links
 
-- [Overspan documentation](https://overspan.dev/docs/)
-- [Error reference](https://overspan.dev/docs/errors)
-- [Usage dashboard](https://overspan.dev/usage)
+- [Overspan documentation](https://overspan.dev/docs/?utm_source=overspan-mcp&utm_medium=readme)
+- [Error reference](https://overspan.dev/docs/errors?utm_source=overspan-mcp&utm_medium=readme)
+- [Usage dashboard](https://overspan.dev/usage?utm_source=overspan-mcp&utm_medium=readme)
 
 Overspan is an independent service, not affiliated with the OpenStreetMap Foundation or the Overpass API project.
 
