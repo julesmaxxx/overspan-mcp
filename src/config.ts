@@ -7,7 +7,8 @@ export interface Config {
 export const MISSING_KEY_GUIDANCE =
   "OVERSPAN_API_KEY is not set. Put it in this MCP server's env block " +
   "(not your shell profile; MCP clients start servers with their own environment). " +
-  "No key yet? Plans at https://overspan.dev/?utm_source=overspan-mcp&utm_medium=tool#pricing, the key arrives by email after checkout.";
+  "No key yet? Try it free for 7 days at https://overspan.dev/trial?utm_source=overspan-mcp&utm_medium=tool (a trial key by email, no card), " +
+  "or see plans at https://overspan.dev/?utm_source=overspan-mcp&utm_medium=tool#pricing, the key arrives by email after checkout.";
 
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
   const apiKey = (env.OVERSPAN_API_KEY ?? "").trim();

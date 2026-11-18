@@ -72,6 +72,38 @@ describe("describeError", () => {
     expect(text).toContain("overspan.dev");
   });
 
+  it("explains the two trial errors and when to retry", () => {
+    const ended = describeError({
+      ok: false,
+      status: 401,
+      text: '{"error":{"code":"trial_ended","message":"This trial ended at 2026-11-25T00:48:06Z. Plans: https://overspan.dev/#pricing"}}',
+      quota: {},
+    });
+    expect(ended).toContain("trial_ended");
+    expect(ended).toContain("Do not retry");
+    expect(ended).toContain("#pricing");
+    const busy = describeError({
+      ok: false,
+      status: 503,
+      text: '{"error":{"code":"trial_busy","message":"Trial queries wait while the servers are busy with paying customers. Retry shortly."}}',
+      quota: {},
+      retryAfter: "5",
+    });
+    expect(busy).toContain("trial_busy");
+    expect(busy).toContain("Retry after the Retry-After period");
+    expect(busy).toContain("Retry-After: 5 seconds");
+  });
+
+  it("says a trial's quota does not reset", () => {
+    const text = describeError({
+      ok: false,
+      status: 429,
+      text: '{"error":{"code":"quota_exceeded","message":"This trial\'s 2000 requests are used."}}',
+      quota: {},
+    });
+    expect(text).toContain("do not reset");
+  });
+
   it("falls back to the raw body for non-JSON errors", () => {
     const text = describeError({ ok: false, status: 502, text: "Bad Gateway", quota: {} });
     expect(text).toContain("502");
@@ -82,7 +114,7 @@ describe("describeError", () => {
 describe("quotaLine", () => {
   it("renders when limit and remaining are present", () => {
     expect(quotaLine({ limit: "50000", remaining: "49999", reset: "2026-09-01T00:00:00Z" })).toBe(
-      "[quota] 49999 of 50000 monthly requests remaining, resets 2026-09-01T00:00:00Z"
+      "[quota] 49999 of 50000 requests remaining, window ends 2026-09-01T00:00:00Z"
     );
   });
 

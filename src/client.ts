@@ -84,6 +84,7 @@ export function describeError(result: ApiResult): string {
 
 export function quotaLine(quota: QuotaInfo): string | undefined {
   if (!quota.remaining || !quota.limit) return undefined;
-  const reset = quota.reset ? `, resets ${quota.reset}` : "";
-  return `[quota] ${quota.remaining} of ${quota.limit} monthly requests remaining${reset}`;
+  // A plan's quota window is the month, a trial's its 7 days: "window ends" is true of both.
+  const reset = quota.reset ? `, window ends ${quota.reset}` : "";
+  return `[quota] ${quota.remaining} of ${quota.limit} requests remaining${reset}`;
 }

@@ -2,7 +2,7 @@
 
 An MCP (Model Context Protocol) server for [Overspan](https://overspan.dev/?utm_source=overspan-mcp&utm_medium=readme), the hosted Overpass API. It gives Claude, Cursor, and any other MCP client direct, metered access to full-planet OpenStreetMap data: raw Overpass QL plus helper tools for nearby search, bounding-box search, counting, and usage checks.
 
-You need an Overspan API key. Plans start at $19/month at [overspan.dev](https://overspan.dev/?utm_source=overspan-mcp&utm_medium=readme#pricing); the key arrives by email after checkout, no account needed.
+You need an Overspan API key. Try it free for 7 days at [overspan.dev/trial](https://overspan.dev/trial?utm_source=overspan-mcp&utm_medium=readme): a trial key by email, 2,000 requests, no card. Plans start at $19/month at [overspan.dev](https://overspan.dev/?utm_source=overspan-mcp&utm_medium=readme#pricing); the key arrives by email after checkout, no account needed.
 
 ## Quickstart
 
@@ -45,8 +45,8 @@ The server also exposes two resources the model can read (`overspan://overpass-q
 ## Behaviour worth knowing
 
 - The key is sent as an `Authorization: Bearer` header, never in a URL.
-- Every successful tool result carries a quota line (`[quota] 49998 of 50000 monthly requests remaining`) so an agent can pace itself. `get_usage` gives the full picture and is free to call.
-- Errors come back in plain language with the gateway's error code, what it means, and whether to retry. Rejected requests do not consume quota, and a runaway loop is bounded by the key's own rate and concurrency caps, never by a larger bill.
+- Every successful tool result carries a quota line (`[quota] 49998 of 50000 requests remaining, window ends 2026-12-01T00:00:00Z`) so an agent can pace itself. A plan's window is the month; a trial's is its 7 days. `get_usage` gives the full picture and is free to call.
+- Errors come back in plain language with the gateway's error code, what it means, and whether to retry. Rejected requests do not consume quota, and a runaway loop is bounded by the key's own rate and concurrency caps, never by a larger bill. A trial key adds two: `trial_busy` (wait and retry: paying customers come first while the servers are busy) and `trial_ended` (the 7 days are over; do not retry).
 - Oversized responses are trimmed to fit a model's context: for Overpass JSON the element list is cut and the result says how many elements were dropped. Raise the cap with `OVERSPAN_MAX_RESPONSE_CHARS` if you want more.
 - Queries without `[timeout:]` get 25 seconds. Set it explicitly for heavy queries, up to your tier's cap.
 

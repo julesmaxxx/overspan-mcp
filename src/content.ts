@@ -12,6 +12,11 @@ export const DIFFERENCES = `How Overspan differs from the public Overpass server
 - Monthly quota counts one unit per accepted request. Rejected requests do
   not consume quota. Rate limits per tier: 60 / 300 / 600 requests per
   minute; concurrent queries: 2 / 4 / 8.
+- A free trial key (7 days, from overspan.dev/trial) has 2,000 requests for
+  its whole life, 30 requests a minute, 1 query at a time, and 60 s and
+  512 MB caps. Its queries wait (HTTP 503 trial_busy, with Retry-After)
+  while the servers are busy with paying customers; after its 7 days it
+  answers 401 trial_ended. Its quota headers' reset time is the trial's end.
 - Output carries full metadata (out meta works) and matches the public
   servers element for element. Attic (historical [date:]) queries are not
   enabled.
